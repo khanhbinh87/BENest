@@ -1,12 +1,20 @@
-import { Controller, Get } from '@nestjs/common';
+import { Controller, Get, Render } from '@nestjs/common';
 import { AppService } from './app.service';
+import { ConfigService } from '@nestjs/config';
 
 @Controller()
 export class AppController {
-  constructor(private readonly appService: AppService) {}
+  constructor(
+    private readonly appService: AppService,
+    private configServie: ConfigService,
+  ) {}
 
   @Get()
-  getHello(): string {
-    return this.appService.getHello();
+  @Render('home')
+  getHello() {
+    const message = this.configServie.get<string>('PORT');
+    return {
+      message,
+    };
   }
 }
