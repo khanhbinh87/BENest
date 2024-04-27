@@ -6,6 +6,7 @@ export class CreateUserDto {
 
     @IsNotEmpty({message:"Password ko dc de trong"})
     password:string;
+    
     name:string;
     address:string
 }
