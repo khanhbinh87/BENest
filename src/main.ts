@@ -13,7 +13,7 @@ async function bootstrap() {
   app.setBaseViewsDir(join(__dirname, '..', 'views'));
   app.setViewEngine('ejs');
   const reflector = app.get(Reflector);
-  app.useGlobalGuards(new JwtAuthGuard(reflector));
+  // app.useGlobalGuards(new JwtAuthGuard(reflector));
   const configService = app.get(ConfigService);
   app.useGlobalPipes(new ValidationPipe());
   await app.listen(configService.get<string>('PORT'));
