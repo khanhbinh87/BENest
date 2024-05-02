@@ -16,6 +16,9 @@ async function bootstrap() {
   // app.useGlobalGuards(new JwtAuthGuard(reflector));
   const configService = app.get(ConfigService);
   app.useGlobalPipes(new ValidationPipe());
+
+  //config cors
+  app.enableCors();
   await app.listen(configService.get<string>('PORT'));
 }
 bootstrap();
